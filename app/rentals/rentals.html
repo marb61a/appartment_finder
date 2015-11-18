@@ -1,1 +1,15 @@
-<p>This is the partial for view 1.</p>
+<div ng-controller="RentalsCtrl">
+    <header>
+        <h1>Apartment Finder</h1>
+        <p>Find an Apartment</p>
+        <div class="row">
+            <div class="large-12 columns">
+                <form>
+                    <input type="text" name="city" ng-model="city" placeholder="Enter a City..." required>
+					<input type="submit" name="submit" value="FIND" class="button">
+					<a href="" class="button warning">Add Listing</a>
+                </form>
+            </div>
+        </div>
+    </header>
+</div>
