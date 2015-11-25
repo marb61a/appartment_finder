@@ -23,8 +23,15 @@ angular.module('rentfinds.rentals', ['ngRoute'])
   
 }])
 
-.controller('RentalsCtrl', [function() {
-	console.log('RentalsCtrl Working..');
+.controller('RentalsCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+  refresh();
+  
+  var city = $scope.city;
+  
+	// Define Firebase Collection
+  var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals");
+  
+  
 }])
 
 .controller('DetailsCtrl', [function() {
