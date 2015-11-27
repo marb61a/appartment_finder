@@ -66,6 +66,35 @@ angular.module('rentfinds.rentals', ['ngRoute'])
 	});
   }
   
+  function clearFields(){
+		console.log('Clearing All Fields...');
+
+		$scope.title = '';
+		$scope.email = '';
+		$scope.phone = '';
+		$scope.bedrooms = '';
+		$scope.price = '';
+		$scope.description = '';
+		$scope.street_address = '';
+		$scope.city = '';
+		$scope.state = '';
+		$scope.zipcode = '';
+	}
+
+	$scope.refresh = function(){
+		refresh();
+	}
+
+	function refresh(){
+		// Define Firebase Collection
+		var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals");
+
+		$scope.rentals = $firebaseArray(ref);
+
+		$scope.showLatest = true;
+		$scope.showResults = false;
+	}
+  
 }])
 
 .controller('DetailsCtrl', [function() {
