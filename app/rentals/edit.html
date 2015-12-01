@@ -1,0 +1,50 @@
+<div ng-controller="RentalsCtrl">
+    <h3 class="page-heading">Edit Listing</h3>
+    <div class="details">
+    <a href="/app/#rentals" class="button tiny back">Back To Litings</a>
+        <div data-alert class="alert-box success" ng-show="msg">
+            {{msg}}
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <form ng-submit="editRental(data, id)">
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>Title
+                                <input type="text" name="title" ng-model="data.title" placeholder="Add a listing title" required />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>Contact Phone
+                                <input type="text" name="phone" ng-model="data.phone" placeholder="Add contact phone number" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>Contact Email
+                                <input type="text" name="email" ng-model="data.email" placeholder="Add contact email" required />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>Street Address
+                                <input type="text" name="street_address" ng-model="data.street_address" placeholder="Add street address" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>City
+                                <input type="text" name="city" ng-model="data.city" placeholder="Add city" required />
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
