@@ -28,3 +28,43 @@
   content: "";
   padding: 0;
 }
+
+header{
+  text-align: center;
+  background:#f4f4f4;
+  padding:20px;
+  margin-bottom:0;
+}
+
+header h1{
+  margin-bottom:0;
+  padding-bottom:0;
+}
+
+.rental{
+  line-height:2em;
+  border-bottom:1px #ccc solid;
+  padding-top:10px;
+}
+
+.page-heading{
+  background: #f57a00;
+  color:#fff;
+  text-align: center;
+  padding:5px;
+  margin:0 0 10px 0;
+}
+
+.details img{
+  width:100%;
+}
+
+.actions{
+  margin-top:10px;
+  padding:5px;
+  background:#f4f4f4;
+}
+
+.back{
+  margin-left:10px;
+}

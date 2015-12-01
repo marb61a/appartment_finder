@@ -18,7 +18,7 @@ angular.module('rentfinds.rentals', ['ngRoute'])
     	when('/edit/:id', {
       templateUrl: 'rentals/edit.html',
       controller: 'EditCtrl'
-  })
+  });
   
   
 }])
@@ -64,7 +64,7 @@ angular.module('rentfinds.rentals', ['ngRoute'])
 
 			clearFields();
 	});
-  }
+  };
   
   function clearFields(){
 		console.log('Clearing All Fields...');
@@ -83,7 +83,7 @@ angular.module('rentfinds.rentals', ['ngRoute'])
 
 	$scope.refresh = function(){
 		refresh();
-	}
+	};
 
 	function refresh(){
 		// Define Firebase Collection
