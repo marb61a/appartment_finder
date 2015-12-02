@@ -102,6 +102,53 @@
                             </label>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>Zipcode
+                                <input type="text" name="zipcode" ng-model="data.zipcode" placeholder="Add zipcode" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>Price
+                                <input type="text" name="price" ng-model="data.price" placeholder="Add monthly price" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>Bedrooms
+                                <select name="bedrooms" ng-model="data.bedrooms">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>Description
+                                <textarea name="description" ng-model="data.description" placeholder="Add a description"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label>Image Url
+                                <input type="text" name="image_url" ng-model="data.image_url" placeholder="Add Image URL" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <input type="submit" class="button" value="Update Listing">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
