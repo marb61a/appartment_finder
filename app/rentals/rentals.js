@@ -101,6 +101,24 @@ angular.module('rentfinds.rentals', ['ngRoute'])
 	console.log('DetailsCtrl Working..');
 }])
 
-.controller('EditCtrl', [function() {
-	console.log('EditCtrl Working..');
+.controller('EditCtrl', ['$scope','$routeParams', '$firebaseObject', function($scope, $routeParams, $firebaseObject) {
+	// Get id from URL
+	$scope.id = $routeParams.id;
+	
+	// Get a DB instance
+	var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals" + 	$scope.id );
+	
+	// Get rental data
+	var rentalData = $firebaseObject(ref);
+	
+	// Bind the data to the scope
+	rentalData.$bindTo($scope, "data");
+	
+	$scope.editRental = function(rental, id){
+		// Get a DB instance
+		var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals" );
+		
+		$scope.msg = "Rental Updated";
+	};
+	
 }])
