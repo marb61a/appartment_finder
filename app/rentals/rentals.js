@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rentfinds.rentals', ['ngRoute'])
+angular.module('rentfinds.rentals', ['ngRoute','firebase'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/rentals', {
@@ -20,16 +20,28 @@ angular.module('rentfinds.rentals', ['ngRoute'])
       controller: 'EditCtrl'
   });
   
-  
 }])
+
 
 .controller('RentalsCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
   refresh();
   
-  var city = $scope.city;
+  $scope.searchRentals = function(){
+  	var city = $scope.city;
   
-	// Define Firebase Collection
-  var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals");
+		// Define Firebase Collection
+	  var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals");
+	  
+	  var query = {
+			"city": city
+		};
+
+		$scope.rentals = $firebaseArray(ref.orderByChild('city').equalTo(city));
+
+		$scope.showLatest = false;
+		$scope.showResults = true;
+
+	};
   
   $scope.addRental = function(){
     if($scope.title){var title = $scope.title} else {var title = null}
@@ -47,7 +59,7 @@ angular.module('rentfinds.rentals', ['ngRoute'])
 	$scope.rentals.$add({
 	  itle: title,
 			email: email,
-			phone, phone,
+			phone: phone,
 			street_address: street_address,
       city: city,
       state: state,
@@ -65,6 +77,18 @@ angular.module('rentfinds.rentals', ['ngRoute'])
 			clearFields();
 	});
   };
+  
+  // Remove Rental
+	$scope.removeRental = function(rental, id){
+		// GET DB Instance
+		var ref = new Firebase('https://rentfinds.firebaseio.com/rentals/'+ $scope.id);
+		
+		ref.remove();
+
+		$scope.msg="Rental Removed";
+		$location.path('/#rentals');
+		
+	};
   
   function clearFields(){
 		console.log('Clearing All Fields...');
@@ -97,9 +121,22 @@ angular.module('rentfinds.rentals', ['ngRoute'])
   
 }])
 
-.controller('DetailsCtrl', [function() {
-	console.log('DetailsCtrl Working..');
+
+.controller('DetailsCtrl', ['$scope', '$firebaseObject', '$routeParams', function($scope, $firebaseObject, $routeParams) {
+	// Get ID From URL
+	$scope.id = $routeParams.id;
+
+	// GET DB Instance
+	var ref = new Firebase('https://rentfinds.firebaseio.com/rentals/'+ $scope.id);
+
+	// GET Rental Data
+	var rentalData = $firebaseObject(ref);
+
+	// Bind Data to Scope
+	rentalData.$bindTo($scope, "data");
+
 }])
+
 
 .controller('EditCtrl', ['$scope','$routeParams', '$firebaseObject', function($scope, $routeParams, $firebaseObject) {
 	// Get id from URL
