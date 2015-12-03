@@ -7,19 +7,18 @@ angular.module('rentfinds.rentals', ['ngRoute','firebase'])
     templateUrl: 'rentals/rentals.html',
     controller: 'RentalsCtrl'
   }).
-      when('/details/:id', {
-      templateUrl: 'rentals/details.html',
-      controller: 'DetailsCtrl'
+  	when('/details/:id', {
+    templateUrl: 'rentals/details.html',
+    controller: 'DetailsCtrl'
   }).
-      when('/add', {
-      templateUrl: 'rentals/add.html',
-      controller: 'RentalsCtrl'
+  	when('/add', {
+    templateUrl: 'rentals/add.html',
+    controller: 'RentalsCtrl'
   }).
-    	when('/edit/:id', {
-      templateUrl: 'rentals/edit.html',
-      controller: 'EditCtrl'
+  	when('/edit/:id', {
+    templateUrl: 'rentals/edit.html',
+    controller: 'EditCtrl'
   });
-  
 }])
 
 
@@ -84,7 +83,7 @@ angular.module('rentfinds.rentals', ['ngRoute','firebase'])
   // Remove Rental
 	$scope.removeRental = function(rental, id){
 		// GET DB Instance
-		var ref = new Firebase('https://rentfinds.firebaseio.com/rentals/'+ $scope.id);
+		var ref = new Firebase('https://appartmentfinder.firebaseio.com/rentals/'+ $scope.id);
 		
 		ref.remove();
 
@@ -130,7 +129,7 @@ angular.module('rentfinds.rentals', ['ngRoute','firebase'])
 	$scope.id = $routeParams.id;
 
 	// GET DB Instance
-	var ref = new Firebase('https://rentfinds.firebaseio.com/rentals/'+ $scope.id);
+	var ref = new Firebase('https://appartmentfinder.firebaseio.com/rentals/'+ $scope.id);
 
 	// GET Rental Data
 	var rentalData = $firebaseObject(ref);
@@ -148,17 +147,17 @@ angular.module('rentfinds.rentals', ['ngRoute','firebase'])
 	// Get a DB instance
 	var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals" + 	$scope.id );
 	
-	// Get rental data
+	// GET Rental Data
 	var rentalData = $firebaseObject(ref);
-	
-	// Bind the data to the scope
+
+	// Bind Data to Scope
 	rentalData.$bindTo($scope, "data");
-	
+
 	$scope.editRental = function(rental, id){
-		// Get a DB instance
-		var ref = new Firebase("https://appartmentfinder.firebaseio.com/rentals" );
-		
+		// GET DB Instance
+		var ref = new Firebase('https://appartmentfinder.firebaseio.com/rentals/'+ id);
+
 		$scope.msg = "Rental Updated";
 	};
 	
-}])
+}]);
